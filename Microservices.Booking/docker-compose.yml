@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  microservices.booking:
+    image: ${DOCKER_REGISTRY-}microservicesbooking
+    build:
+      context: .
+      dockerfile: Microservices.Booking/Dockerfile
