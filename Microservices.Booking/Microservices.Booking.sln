@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservices.Booking", "Microservices.Booking\Microservices.Booking.csproj", "{6D622BF2-B579-486F-90EA-C2BEC26DC652}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservices.Booking", "Microservices.Booking\Microservices.Booking.csproj", "{6D622BF2-B579-486F-90EA-C2BEC26DC652}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{897BDBA5-F734-44F7-B05E-5908C9A9935E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservices.Booking.Tests", "..\Microservices.Booking.Tests\Microservices.Booking.Tests.csproj", "{C1455125-7FFE-4EAA-8A7D-3737912D30F8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservices.Common", "..\..\Microservices.Common\Microservice.Common\Microservices.Common.csproj", "{30EE6838-594B-4659-8841-11DA0D3E7777}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{897BDBA5-F734-44F7-B05E-5908C9A9935E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{897BDBA5-F734-44F7-B05E-5908C9A9935E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{897BDBA5-F734-44F7-B05E-5908C9A9935E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1455125-7FFE-4EAA-8A7D-3737912D30F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1455125-7FFE-4EAA-8A7D-3737912D30F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1455125-7FFE-4EAA-8A7D-3737912D30F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1455125-7FFE-4EAA-8A7D-3737912D30F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30EE6838-594B-4659-8841-11DA0D3E7777}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30EE6838-594B-4659-8841-11DA0D3E7777}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30EE6838-594B-4659-8841-11DA0D3E7777}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30EE6838-594B-4659-8841-11DA0D3E7777}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
