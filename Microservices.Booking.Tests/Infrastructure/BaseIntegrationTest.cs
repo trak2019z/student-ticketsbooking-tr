@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using Flurl.Http;
 using Microservices.Common.Mongo;
 using Microservices.Common.Types;
@@ -18,23 +17,18 @@ namespace Microservices.Booking.Tests.Infrastructure
         protected BaseIntegrationTest()
         {
             RunId = Guid.NewGuid().ToString();
-            DirectoryInfo = new DirectoryInfo(RunId);
-
             var builder = WebHost.CreateDefaultBuilder()
                 .ConfigureAppConfiguration(ConfigureAppConfiguration)
                 .UseStartup<Startup>();
             var server = new TestServer(builder);
-
             Services = server.Host.Services;
             var client = server.CreateClient();
             FlurlClient = new FlurlClient(client);
         }
 
-        protected IFlurlClient FlurlClient { get; }
+        private IFlurlClient FlurlClient { get; }
 
-        protected string RunId { get; set; }
-
-        protected DirectoryInfo DirectoryInfo { get; set; }
+        private string RunId { get; }
 
         protected const string Token = "XXX";
 
