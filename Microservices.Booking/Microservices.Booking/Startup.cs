@@ -52,7 +52,6 @@ namespace Microservices.Booking
             app.UseHttpsRedirection();
             app.UseMvc();
             app.UseRabbitMq();
-            builder.AddDispatchers();
             app.UseSwaggerDocs();
             applicationLifetime.ApplicationStopped.Register(() => Container.Dispose());
             startupInitializer.InitializeAsync();
