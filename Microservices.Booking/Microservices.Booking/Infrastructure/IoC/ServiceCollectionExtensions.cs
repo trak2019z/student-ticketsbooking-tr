@@ -1,6 +1,8 @@
 ﻿using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Humanizer;
+using Microservices.Booking.BussinessLogic.Services.MoviePremieresReader;
+using Microservices.Booking.BussinessLogic.Services.MoviePremieresReader.Settings;
 using Microservices.Booking.Domain.Entities;
 using Microservices.Booking.Web.Controllers;
 using Microservices.Common.Abstractions;
@@ -41,6 +43,7 @@ namespace Microservices.Booking.Infrastructure.IoC
             builder.AddDispatchers();
             builder.AddExceptionHandlers();
             builder.RegisterSettingsValidators();
+            services.AddOptions();
 
             // TODO: move to the top after solving issue with registration order of IXlsxValueMapper implementations
             builder.RegisterAssemblyTypes(typeof(TicketsController).Assembly)
@@ -52,6 +55,7 @@ namespace Microservices.Booking.Infrastructure.IoC
         public static void RegisterSettings(this IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<EncryptionSettings>(configuration.GetSection("Encryption"));
+            services.Configure<TheMovieDbApiSettings>(configuration.GetSection("TheMovieDbApiSettings"));
         }
 
         private static void RegisterSettingsValidators(this ContainerBuilder builder)
