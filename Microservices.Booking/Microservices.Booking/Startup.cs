@@ -30,8 +30,8 @@ namespace Microservices.Booking
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddCustomMvc();
-
-            Container = services.BuildAutofacContainer();
+            services.RegisterSettings(Configuration);
+            Container = services.BuildAutofacContainer();        
             return new AutofacServiceProvider(Container);
         }
 
