@@ -8,7 +8,7 @@ namespace Microservices.Booking.Domain.Entities
         public string Value { get; set; }
     }
 
-    public class Movie
+    public class OMDBMovie
     {
         public string Title { get; set; }
         public string Year { get; set; }
