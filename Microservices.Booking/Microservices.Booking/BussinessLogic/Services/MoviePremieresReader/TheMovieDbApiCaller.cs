@@ -3,30 +3,31 @@ using System.Threading.Tasks;
 using Flurl.Http;
 using Flurl.Http.Configuration;
 using Microservices.Booking.BussinessLogic.Models;
+using Microservices.Booking.BussinessLogic.Services.MoviePremieresReader.Settings;
 using Microsoft.Extensions.Options;
 
 namespace Microservices.Booking.BussinessLogic.Services.MoviePremieresReader
 {
-    internal sealed class MoviePremieresTheMovieDbMovieReaderService : IMoviePremieresReaderService<TheMovieDbMovie>
+    internal sealed class TheMovieDbApiCaller : IMovieApiCaller<TheMovieDbResponseDto>
     {
         private readonly TheMovieDbApiSettings _apiSettings;
         private readonly IFlurlClientFactory _httpClient;
 
 
-        public MoviePremieresTheMovieDbMovieReaderService(IFlurlClientFactory httpClient,
+        public TheMovieDbApiCaller(IFlurlClientFactory httpClient,
             IOptions<TheMovieDbApiSettings> options)
         {
             _httpClient = httpClient;
             _apiSettings = options.Value;
         }
 
-        public async Task<IEnumerable<TheMovieDbMovie>> GetMoviesAsync()
+        public async Task<TheMovieDbResponseDto> GetMoviesAsync()
         {
             var httpClient = _httpClient.Get(_apiSettings.Url);
             var response = await httpClient
-                .Request(_apiSettings.Url)
-                .SetQueryParam("Apikey", _apiSettings.ApiKey)
-                .GetJsonAsync<IEnumerable<TheMovieDbMovie>>();
+                .Request($"{_apiSettings.Url}{_apiSettings.Endpoints.NowPlaying}")
+                .SetQueryParam("api_key", _apiSettings.ApiKey)
+                .GetJsonAsync<TheMovieDbResponseDto>();
 
             return response;
         }
