@@ -1,6 +1,6 @@
 ﻿namespace Microservices.Booking.BussinessLogic.Services.MoviePremieresReader.Settings
 {
-    internal sealed class TheMovieDbApiSettings
+    public class TheMovieDbApiSettings
     {
         public TheMovieDbApiSettings(string url, string apiKey)
         {
@@ -17,7 +17,7 @@
         public EndpointSettings Endpoints { get; set; }
     }
 
-    internal sealed class EndpointSettings
+    public class EndpointSettings
     {
         public string NowPlaying { get; set; }
     }
