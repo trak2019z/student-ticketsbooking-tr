@@ -5,7 +5,7 @@ using Microservices.Common.Types;
 namespace Microservices.Booking.BussinessLogic.Queries.GetMovieShowsForCinemaAndTimePeriod
 {
     [UsedImplicitly]
-    public sealed class GetMovieShowsForCinemaAndTimePeriodQuery : IQuery<PagedResult<MovieShows>>
+    internal sealed class GetMovieShowsForCinemaAndTimePeriodQuery : IQuery<PagedResult<MovieShows>>
     {
         public string Cinema { get; set; }
 
