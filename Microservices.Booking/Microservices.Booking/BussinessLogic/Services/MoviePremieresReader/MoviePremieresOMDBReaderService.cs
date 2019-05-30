@@ -8,29 +8,25 @@ using Microsoft.Extensions.Options;
 
 namespace Microservices.Booking.BussinessLogic.Services.MoviePremieresReader
 {
-    public interface IMoviePremieresReaderService
-    {
-        Task<IEnumerable<Movie>> GetMoviesAsync();
-    }
-    internal sealed class MoviePremieresReaderService: IMoviePremieresReaderService
+    internal sealed class MoviePremieresOMDBReaderService: IMoviePremieresReaderService<OMDBMovie>
     {
         private readonly IFlurlClientFactory _httpClient;
-        private readonly MoviePremieresApiSettings _apiSettings;
+        private readonly OMDbMovieAPISettings _apiSettings;
 
 
-        public MoviePremieresReaderService(IFlurlClientFactory httpClient, IOptions<MoviePremieresApiSettings> options)
+        public MoviePremieresOMDBReaderService(IFlurlClientFactory httpClient, IOptions<OMDbMovieAPISettings> options)
         {
             _httpClient = httpClient;
             _apiSettings = options.Value;
         }
 
-        public async Task<IEnumerable<Movie>> GetMoviesAsync()
+        public async Task<IEnumerable<OMDBMovie>> GetMoviesAsync()
         {
             var httpClient = _httpClient.Get(_apiSettings.Url);
             var response = await httpClient
                 .Request(_apiSettings.Url)
                 .SetQueryParam("Apikey", _apiSettings.ApiKey)
-                .GetJsonAsync<IEnumerable<Movie>>();
+                .GetJsonAsync<IEnumerable<OMDBMovie>>();
 
             return response;
         }
