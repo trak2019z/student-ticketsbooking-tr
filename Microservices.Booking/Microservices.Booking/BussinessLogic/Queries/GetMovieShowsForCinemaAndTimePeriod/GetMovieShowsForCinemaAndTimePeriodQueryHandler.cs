@@ -7,7 +7,7 @@ using Microservices.Common.Types;
 
 namespace Microservices.Booking.BussinessLogic.Queries.GetMovieShowsForCinemaAndTimePeriod
 {
-    internal sealed class GetMovieShowsForCinemaAndTimePeriodQueryHandler : IQueryHandler<GetMovieShowsForCinemaAndTimePeriodQuery,PagedResult<MovieShows>>
+    internal sealed class GetMovieShowsForCinemaAndTimePeriodQueryHandler : IQueryHandler<GetMovieShowsForCinemaAndTimePeriodQuery, PagedResult<MovieShows>>
     {
         private readonly IMongoRepository<MovieShows> _mongoRepository;
 

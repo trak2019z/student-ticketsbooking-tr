@@ -9,10 +9,5 @@ namespace Microservices.Booking.Domain.Entities
         public string City { get; set; }
 
         public IReadOnlyList<MovieShow> Shows { get; set; }
-
-        public MovieShows()
-        {
-
-        }
     }
 }

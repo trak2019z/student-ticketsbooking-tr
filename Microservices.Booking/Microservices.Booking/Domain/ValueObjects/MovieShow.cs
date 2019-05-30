@@ -6,12 +6,6 @@ namespace Microservices.Booking.Domain.ValueObjects
 {
     public class MovieShow : BaseEntity
     {
-        public string Cinema { get; private set; }
-
-        public string Movie { get; set; }
-
-        public DateTime PlayDateTime { get; set; }
-
         public IReadOnlyList<Seat> ReservedSeats;
 
         public MovieShow(string cinema, string movie, DateTime playDateTime, IReadOnlyList<Seat> reservedSeats)
@@ -21,5 +15,11 @@ namespace Microservices.Booking.Domain.ValueObjects
             PlayDateTime = playDateTime;
             ReservedSeats = reservedSeats;
         }
+
+        public string Cinema { get; }
+
+        public string Movie { get; set; }
+
+        public DateTime PlayDateTime { get; set; }
     }
 }
