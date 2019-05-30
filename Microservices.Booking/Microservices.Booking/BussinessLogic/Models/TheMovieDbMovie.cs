@@ -7,9 +7,6 @@ namespace Microservices.Booking.BussinessLogic.Models
 {
     public class TheMovieDbMovie
     {
-    }
-    public class Result
-    {
         public int vote_count { get; set; }
         public int id { get; set; }
         public bool video { get; set; }
@@ -32,9 +29,9 @@ namespace Microservices.Booking.BussinessLogic.Models
         public string minimum { get; set; }
     }
 
-    public class RootObject
+    public class TheMovieDbResponseDto
     {
-        public List<Result> results { get; set; }
+        public List<TheMovieDbMovie> results { get; set; }
         public int page { get; set; }
         public int total_results { get; set; }
         public Dates dates { get; set; }
