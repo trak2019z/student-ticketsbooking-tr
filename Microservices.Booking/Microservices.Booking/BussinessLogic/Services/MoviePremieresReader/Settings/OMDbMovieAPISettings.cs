@@ -1,12 +1,12 @@
 ﻿namespace Microservices.Booking.BussinessLogic.Services.MoviePremieresReader.Settings
 {
-    public class MoviePremieresApiSettings
+    public class OMDbMovieAPISettings
     {
-        public MoviePremieresApiSettings()
+        public OMDbMovieAPISettings()
         {
         }
 
-        public MoviePremieresApiSettings(string url, string apiKey)
+        public OMDbMovieAPISettings(string url, string apiKey)
         {
             Url = url;
             ApiKey = apiKey;
