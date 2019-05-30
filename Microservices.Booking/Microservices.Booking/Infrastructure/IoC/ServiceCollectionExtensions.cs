@@ -1,7 +1,6 @@
 ﻿using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Humanizer;
-using Microservices.Booking.BussinessLogic.Services.MoviePremieresReader;
 using Microservices.Booking.BussinessLogic.Services.MoviePremieresReader.Settings;
 using Microservices.Booking.Domain.Entities;
 using Microservices.Booking.Web.Controllers;
@@ -42,7 +41,6 @@ namespace Microservices.Booking.Infrastructure.IoC
                 .Pluralize());
             builder.AddDispatchers();
             builder.AddExceptionHandlers();
-            builder.RegisterSettingsValidators();
             services.AddOptions();
 
             // TODO: move to the top after solving issue with registration order of IXlsxValueMapper implementations
@@ -56,10 +54,6 @@ namespace Microservices.Booking.Infrastructure.IoC
         {
             services.Configure<EncryptionSettings>(configuration.GetSection("Encryption"));
             services.Configure<TheMovieDbApiSettings>(configuration.GetSection("TheMovieDbApiSettings"));
-        }
-
-        private static void RegisterSettingsValidators(this ContainerBuilder builder)
-        {
         }
     }
 }

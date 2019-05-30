@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Flurl.Http;
 using Flurl.Http.Configuration;
 using Microservices.Booking.BussinessLogic.Models;
@@ -12,7 +11,6 @@ namespace Microservices.Booking.BussinessLogic.Services.MoviePremieresReader
     {
         private readonly TheMovieDbApiSettings _apiSettings;
         private readonly IFlurlClientFactory _httpClient;
-
 
         public TheMovieDbApiCaller(IFlurlClientFactory httpClient,
             IOptions<TheMovieDbApiSettings> options)
