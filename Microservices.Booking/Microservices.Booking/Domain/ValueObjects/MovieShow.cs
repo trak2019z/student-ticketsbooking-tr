@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Microservices.Booking.Domain.Entities;
 using Microservices.Common.Types;
 
 namespace Microservices.Booking.Domain.ValueObjects
