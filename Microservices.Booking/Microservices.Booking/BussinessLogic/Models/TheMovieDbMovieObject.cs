@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Microservices.Booking.BussinessLogic.Models
 {
-    public class TheMovieDbMovie
+    public class TheMovieDbMovieObject
     {
         public int vote_count { get; set; }
         public int id { get; set; }
@@ -31,7 +28,7 @@ namespace Microservices.Booking.BussinessLogic.Models
 
     public class TheMovieDbResponseDto
     {
-        public List<TheMovieDbMovie> results { get; set; }
+        public List<TheMovieDbMovieObject> results { get; set; }
         public int page { get; set; }
         public int total_results { get; set; }
         public Dates dates { get; set; }
