@@ -1,4 +1,4 @@
-﻿namespace Microservices.Booking.BussinessLogic.Services.MoviePremieresReader
+﻿namespace Microservices.Booking.BussinessLogic.Services.MoviePremieresReader.Settings
 {
     internal sealed class TheMovieDbApiSettings
     {
@@ -10,10 +10,15 @@
 
         public TheMovieDbApiSettings()
         {
-            
         }
 
-        public string Url { get; }
-        public string ApiKey { get; }
+        public string Url { get; set; }
+        public string ApiKey { get; set; }
+        public EndpointSettings Endpoints { get; set; }
+    }
+
+    internal sealed class EndpointSettings
+    {
+        public string NowPlaying { get; set; }
     }
 }
