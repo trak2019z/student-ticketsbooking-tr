@@ -1,11 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using Microservices.Common.Types;
 
 namespace Microservices.Booking.Domain.ValueObjects
 {
-    public class City
+    public class City : BaseEntity
     {
+        public string Name { get; set; }
+        public uint Rows { get; set; }
+        public uint Columns { get; set; }
+        public IEnumerable<double> MovieShowHours { get; set; }
     }
 }
