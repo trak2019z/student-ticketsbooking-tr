@@ -1,18 +1,23 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microservices.Booking.BussinessLogic.Models;
+using Microservices.Booking.BussinessLogic.Services.MoviePremieresReader;
 using Microservices.Common.Dispatchers;
 using Microservices.Common.Mvc.Middleware;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Microservices.Booking.Web.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
     public class ValuesController : BaseController
     {
+        private readonly IMoviePremieresReaderService<TheMovieDbMovie> _moviePremieresReaderService;
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public async Task<ActionResult<IEnumerable<string>>> Get()
         {
+            var a = await _moviePremieresReaderService.GetMoviesAsync();
             return new[] { "value1", "value2" };
         }
 
@@ -41,8 +46,9 @@ namespace Microservices.Booking.Web.Controllers
         {
         }
 
-        public ValuesController(IDispatcher dispatcher) : base(dispatcher)
+        public ValuesController(IDispatcher dispatcher, IMoviePremieresReaderService<TheMovieDbMovie> moviePremieresReaderService) : base(dispatcher)
         {
+            _moviePremieresReaderService = moviePremieresReaderService;
         }
     }
 }
