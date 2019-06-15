@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Flurl.Http;
+using Microservices.Booking.Domain.Entities;
 using Shouldly;
 using Xunit;
 using Xunit.Categories;
@@ -14,16 +15,16 @@ namespace Microservices.Booking.Tests.Web.Controllers
         public async Task GetMovieProjectionsForSpecifiedCinemaAndPeriod()
         {
             // Arrange
-            var token = "XXX";
+            const string token = "XXX";
             // Act
-            var flurlClient=new FlurlClient("localhost");
+            var flurlClient=new FlurlClient("http://localhost:59298");
             var response = await flurlClient
-                .Request($"v1/Booking")
-                .SetQueryParam("Cinema", "Rzeszów")
-                .SetQueryParam("StartDate", DateTime.MinValue)
-                .SetQueryParam("EndDate", DateTime.MaxValue)
+                .Request("/Tickets")
+                .SetQueryParam("Cinema", "Warszawa")
+                .SetQueryParam("StartDate", DateTime.MinValue.Date)
+                .SetQueryParam("EndDate", DateTime.MaxValue.Date)
                 .WithOAuthBearerToken(token)
-                .GetJsonAsync<object>();
+                .GetJsonAsync<MovieShows>();
 
             // Assert
             response.ShouldNotBeNull();

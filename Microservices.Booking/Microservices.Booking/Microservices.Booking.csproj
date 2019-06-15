@@ -27,7 +27,6 @@
     <Folder Include="BussinessLogic\Extensions\" />
     <Folder Include="BussinessLogic\Repositories\" />
     <Folder Include="Domain\DomainExceptions\" />
-    <Folder Include="Domain\ValueObjects\" />
     <Folder Include="Web\Infrastructure\Hangfire\" />
   </ItemGroup>
 
