@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -9,9 +9,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Flurl" Version="2.8.1" />
+    <PackageReference Include="Flurl.Http" Version="2.4.1" />
+    <PackageReference Include="Microservices.Common" Version="1.0.11-develop" Condition="'$(Configuration)' == 'Release'" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.0.2105168" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.5.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Microservices.Common\Microservice.Common\Microservices.Common.csproj" Condition="'$(Configuration)' == 'Debug'" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="BussinessLogic\Models\" />
+    <Folder Include="BussinessLogic\Mappers\" />
+    <Folder Include="BussinessLogic\Extensions\" />
+    <Folder Include="BussinessLogic\Repositories\" />
+    <Folder Include="Domain\DomainExceptions\" />
+    <Folder Include="Web\Infrastructure\Hangfire\" />
   </ItemGroup>
 
 </Project>

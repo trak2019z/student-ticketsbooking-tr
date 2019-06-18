@@ -6,3 +6,7 @@ services:
     build:
       context: .
       dockerfile: Microservices.Booking/Dockerfile
+networks:
+  default:
+    external:
+      name: microservice-network
