@@ -8,15 +8,14 @@ namespace Microservices.Booking.Domain.ValueObjects
     {
         public IReadOnlyList<Seat> ReservedSeats;
 
-        public MovieShow(string cinema, string movie, DateTime playDateTime, IReadOnlyList<Seat> reservedSeats)
+        public MovieShow(string movie, DateTime playDateTime, IReadOnlyList<Seat> reservedSeats, string posterUrl)
         {
-            Cinema = cinema;
             Movie = movie;
             PlayDateTime = playDateTime;
             ReservedSeats = reservedSeats;
+            PosterUrl = posterUrl;
         }
-
-        public string Cinema { get; }
+        public string PosterUrl { get; set; }
 
         public string Movie { get; set; }
 
