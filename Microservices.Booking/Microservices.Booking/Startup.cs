@@ -1,10 +1,14 @@
 ﻿using System;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using FluentValidation.AspNetCore;
 using Microservices.Booking.Infrastructure.IoC;
+using Microservices.Booking.Web.Controllers;
 using Microservices.Common;
 using Microservices.Common.Bus.RabbitMqBus;
 using Microservices.Common.Mvc;
+using Microservices.Common.Mvc.Filters;
+using Microservices.Common.Mvc.Middleware;
 using Microservices.Common.Swagger;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,7 +32,9 @@ namespace Microservices.Booking
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc(cfg => cfg.Filters.Add<ValidateModelAttribute>())
+                .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<TicketsController>())
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddCustomMvc();
             services.RegisterSettings(Configuration);
             Container = services.BuildAutofacContainer();        
@@ -50,6 +56,7 @@ namespace Microservices.Booking
             }
 
             app.UseHttpsRedirection();
+            app.UseMiddleware<ExceptionMiddleware>();
             app.UseMvc();
             app.UseRabbitMq();
             app.UseSwaggerDocs();
