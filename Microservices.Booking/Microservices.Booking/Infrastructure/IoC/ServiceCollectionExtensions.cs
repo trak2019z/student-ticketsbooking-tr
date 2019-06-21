@@ -1,7 +1,9 @@
-﻿using Autofac;
+﻿using System.Collections.Generic;
+using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Humanizer;
 using Microservices.Booking.BussinessLogic.Services.MoviePremieresReader.Settings;
+using Microservices.Booking.BussinessLogic.Settings;
 using Microservices.Booking.Domain.Entities;
 using Microservices.Booking.Web.Controllers;
 using Microservices.Common.Abstractions;
@@ -27,8 +29,7 @@ namespace Microservices.Booking.Infrastructure.IoC
 
             var importModule = new BookingApiModule();
             builder.AddRabbitMq();
-            builder.RegisterModule(importModule);
-            builder.Populate(services);
+            builder.RegisterModule(importModule);            
             services.AddCustomMvc();
             services.AddSwaggerDocs();
             services.AddConsul();
@@ -37,16 +38,17 @@ namespace Microservices.Booking.Infrastructure.IoC
             builder.AddAbstractions();
             builder.AddStringEncryptor();
             builder.AddMongo();
+            builder.AddMongoRepository<Cinema>(nameof(Cinema)
+                .Pluralize());
             builder.AddMongoRepository<MovieShows>(nameof(MovieShows)
                 .Pluralize());
             builder.AddDispatchers();
             builder.AddExceptionHandlers();
             services.AddOptions();
 
-            // TODO: move to the top after solving issue with registration order of IXlsxValueMapper implementations
             builder.RegisterAssemblyTypes(typeof(TicketsController).Assembly)
                 .AsImplementedInterfaces();
-
+            builder.Populate(services);
             return builder.Build();
         }
 
@@ -54,6 +56,7 @@ namespace Microservices.Booking.Infrastructure.IoC
         {
             services.Configure<EncryptionSettings>(configuration.GetSection("Encryption"));
             services.Configure<TheMovieDbApiSettings>(configuration.GetSection("TheMovieDbApiSettings"));
+            services.Configure<CinemasSettings>(configuration.GetSection("CinemaSettings"));          
         }
     }
 }
