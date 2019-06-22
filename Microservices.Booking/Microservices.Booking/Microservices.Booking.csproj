@@ -11,7 +11,7 @@
   <ItemGroup>
     <PackageReference Include="Flurl" Version="2.8.1" />
     <PackageReference Include="Flurl.Http" Version="2.4.1" />
-    <PackageReference Include="Microservices.Common" Version="1.0.11-develop" Condition="'$(Configuration)' == 'Release'" />
+    <PackageReference Include="Microservices.Common" Version="1.0.11" Condition="'$(Configuration)' == 'Release'" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.5.4" />
