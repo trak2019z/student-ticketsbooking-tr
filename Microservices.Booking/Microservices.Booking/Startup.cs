@@ -56,7 +56,7 @@ namespace Microservices.Booking
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseMiddleware<ExceptionMiddleware>();
             app.UseMvc();
             app.UseRabbitMq()
