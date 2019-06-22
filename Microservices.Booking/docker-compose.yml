@@ -8,6 +8,11 @@ services:
       dockerfile: Microservices.Booking/Dockerfile
     networks:
       - microservice
+    restart: unless-stopped         # <--- my addition 
+    depends_on:
+      - mongo
+      - rabbitmq  
+      - redis  
       
   mongo:
     image: mongo:4
