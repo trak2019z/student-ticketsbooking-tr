@@ -6,7 +6,50 @@ services:
     build:
       context: .
       dockerfile: Microservices.Booking/Dockerfile
+    networks:
+      - microservice
+      
+  mongo:
+    image: mongo:4
+    container_name: mongo
+    ports:
+      - 27017:27017
+    networks:
+      - microservice
+    # network_mode: host
+    volumes:
+      - mongo:/data/db
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672
+    networks:
+      - microservice
+    # network_mode: host
+    volumes: 
+      - rabbitmq:/var/lib/rabbitmq
+
+  redis:
+    image: redis
+    container_name: redis
+    ports:
+      - 6379:6379
+    networks:
+      - microservice
+    # network_mode: host
+    volumes: 
+      - redis:/data
+
 networks:
-  default:
-    external:
-      name: microservice-network
+    microservice:
+
+volumes:
+  mongo:
+    driver: local
+  rabbitmq:
+    driver: local
+  redis:
+    driver: local
