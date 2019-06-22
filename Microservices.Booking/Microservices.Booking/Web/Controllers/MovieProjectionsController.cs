@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microservices.Booking.BussinessLogic.Queries.GetMovieShowsForCinemaAndTimePeriod;
 using Microservices.Booking.Domain.Entities;
 using Microservices.Booking.Domain.ValueObjects;
+using Microservices.Common.Bus;
 using Microservices.Common.Dispatchers;
 using Microservices.Common.Mvc.Middleware;
 using Microservices.Common.Types;
@@ -18,7 +19,7 @@ namespace Microservices.Booking.Web.Controllers
     public class MovieProjectionsController : BaseController
     {
 
-        public MovieProjectionsController(IDispatcher dispatcher) : base(dispatcher)
+        public MovieProjectionsController(IDispatcher dispatcher, IBusPublisher busPublisher) : base(dispatcher, busPublisher)
         {
 
         }

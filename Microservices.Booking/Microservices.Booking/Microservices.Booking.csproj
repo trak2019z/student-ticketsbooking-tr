@@ -22,12 +22,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="BussinessLogic\Commands\CancelBookingSeatForCinemaShow\" />
     <Folder Include="BussinessLogic\Models\" />
     <Folder Include="BussinessLogic\Mappers\" />
     <Folder Include="BussinessLogic\Extensions\" />
     <Folder Include="BussinessLogic\Repositories\" />
     <Folder Include="Domain\DomainExceptions\" />
     <Folder Include="Web\Infrastructure\Hangfire\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

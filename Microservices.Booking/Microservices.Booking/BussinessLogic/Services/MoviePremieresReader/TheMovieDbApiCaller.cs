@@ -7,7 +7,7 @@ using Microsoft.Extensions.Options;
 
 namespace Microservices.Booking.BussinessLogic.Services.MoviePremieresReader
 {
-    internal sealed class TheMovieDbApiCaller : IMovieApiCaller<TheMovieDbResponseDto>
+    public sealed class TheMovieDbApiCaller : IMovieApiCaller<TheMovieDbResponseDto>
     {
         private readonly TheMovieDbApiSettings _apiSettings;
         private readonly IFlurlClientFactory _httpClient;
