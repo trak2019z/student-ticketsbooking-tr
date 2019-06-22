@@ -2,6 +2,7 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using FluentValidation.AspNetCore;
+using Microservices.Booking.BussinessLogic.Commands.BookSeatForMovieShow;
 using Microservices.Booking.Infrastructure.IoC;
 using Microservices.Booking.Web.Controllers;
 using Microservices.Common;
@@ -58,7 +59,8 @@ namespace Microservices.Booking
             app.UseHttpsRedirection();
             app.UseMiddleware<ExceptionMiddleware>();
             app.UseMvc();
-            app.UseRabbitMq();
+            app.UseRabbitMq()
+                .SubscribeCommand<BookSeatForMovieShowCommand>();
             app.UseSwaggerDocs();
             applicationLifetime.ApplicationStopped.Register(() => Container.Dispose());
             startupInitializer.InitializeAsync();

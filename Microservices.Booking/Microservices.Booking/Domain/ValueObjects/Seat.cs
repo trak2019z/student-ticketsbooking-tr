@@ -4,7 +4,11 @@ namespace Microservices.Booking.Domain.ValueObjects
 {
     public sealed class Seat : ValueObject<Seat>
     {
-        public MovieShow MovieShow { get; set; }
+        public Seat(uint row, uint column)
+        {
+            this.Row = row;
+            this.Column = column;
+        }
 
         public uint Row { get; set; }
 
@@ -12,14 +16,13 @@ namespace Microservices.Booking.Domain.ValueObjects
 
         protected override bool EqualsCore(Seat other)
         {
-            return MovieShow == other.MovieShow &&
-                   Row == other.Row &&
+            return Row == other.Row &&
                    Column == other.Column;
         }
 
         protected override int GetHashCodeCore()
         {
-            return MovieShow.GetHashCode() + Row.GetHashCode() + Column.GetHashCode();
+            return Row.GetHashCode() + Column.GetHashCode();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 using Microservices.Booking.Domain.Entities;
 using Microservices.Booking.Domain.ValueObjects;
 using Microservices.Common.Handlers;
@@ -8,9 +9,8 @@ using Microservices.Common.Types;
 
 namespace Microservices.Booking.BussinessLogic.Queries.GetMovieShowsForCinemaAndTimePeriod
 {
-    internal sealed class
-        GetMovieShowsForCinemaAndTimePeriodQueryHandler : IQueryHandler<GetMovieShowsForCinemaAndTimePeriodQuery,
-            PagedResult<MovieShow>>
+    [UsedImplicitly]
+    internal sealed class GetMovieShowsForCinemaAndTimePeriodQueryHandler : IQueryHandler<GetMovieShowsForCinemaAndTimePeriodQuery, PagedResult<MovieShow>>
     {
         private readonly IMongoRepository<MovieShows> _movieShowsRepository;
 

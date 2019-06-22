@@ -49,7 +49,7 @@ namespace Microservices.Booking.Tests.Infrastructure
             return Services.GetService<IMongoRepository<T>>();
         }
 
-        private void ClearMongoDb()
+        protected void ClearMongoDb()
         {
             var mongoClient = Services.GetService<IMongoDatabase>();
             var config = Services.GetService<MongoDbSettings>();
